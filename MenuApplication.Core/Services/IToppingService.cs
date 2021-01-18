@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MenuApplication.Core.Services
 {
-    interface IToppingService
+    public interface IToppingService
     {
         Task<IEnumerable<Topping>> GetToppings();
         Task<Topping> GetTopping(int id);

@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+	<GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MenuApplication.Core\MenuApplication.Core.csproj" />
+    <ProjectReference Include="..\MenuApplication.Data\MenuApplication.Data.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -7,8 +7,8 @@ namespace MenuApplication.Core
 {
     public interface IUnitOfWork : IDisposable
     {
-        IPizzaRespository Musics { get; }
-        IToppingRepository Artists { get; }
+        IPizzaRespository Pizzas { get; }
+        IToppingRepository Toppings { get; }
         Task<int> CommitAsync();
     }
 }

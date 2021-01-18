@@ -18,7 +18,7 @@ namespace MenuApplication.Data.Repositories
             return await MyMenuContext.Pizzas
                 .Include(a => a.PizzaDetails)
                 .ToListAsync();
-        }
+        }        
 
         public async Task<Pizza> GetWithToppingsByIdAsync(int id)
         {

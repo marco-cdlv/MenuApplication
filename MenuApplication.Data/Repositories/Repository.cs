@@ -56,10 +56,5 @@ namespace MenuApplication.Data.Repositories
         {
             return Context.Set<TEntity>().SingleOrDefaultAsync(predicate);
         }
-
-        Task<TEntity> IRepository<TEntity>.GetByIdAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

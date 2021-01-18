@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MenuApplication.Core.Services
 {
-    interface IPizzaService
+    public interface IPizzaService
     {
         Task<IEnumerable<Pizza>> GetPizzas();
         Task<Pizza> Getpizza(int id);

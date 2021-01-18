@@ -21,9 +21,9 @@ namespace MenuApplication.Data
             this._context = context;
         }
 
-        IPizzaRespository IUnitOfWork.Musics => pizzaRepository = pizzaRepository ?? new PizzaRepository(_context);
+        IPizzaRespository IUnitOfWork.Pizzas => pizzaRepository = pizzaRepository ?? new PizzaRepository(_context);
 
-        IToppingRepository IUnitOfWork.Artists => toppingRepository = toppingRepository ?? new ToppingRepository(_context);
+        IToppingRepository IUnitOfWork.Toppings => toppingRepository = toppingRepository ?? new ToppingRepository(_context);
 
 
         async Task<int> IUnitOfWork.CommitAsync()

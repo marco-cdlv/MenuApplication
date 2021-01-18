@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MenuApplication.Core", "Men
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MenuApplication.Data", "MenuApplication.Data\MenuApplication.Data.csproj", "{531AE91E-D5A1-4B06-B45E-5F9A732F9306}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MenuApplication.Services", "MenuApplication.Services\MenuApplication.Services.csproj", "{49B433E8-E538-4ACA-A13E-A21469334F4A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{531AE91E-D5A1-4B06-B45E-5F9A732F9306}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{531AE91E-D5A1-4B06-B45E-5F9A732F9306}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{531AE91E-D5A1-4B06-B45E-5F9A732F9306}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49B433E8-E538-4ACA-A13E-A21469334F4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49B433E8-E538-4ACA-A13E-A21469334F4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49B433E8-E538-4ACA-A13E-A21469334F4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49B433E8-E538-4ACA-A13E-A21469334F4A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -12,7 +12,7 @@ namespace MenuApplication.Core.Models
 
         public int ToppingId { get; set; }
 
-        public int TopyngQuantity { get; set; }        
+        public int ToppingQuantity { get; set; }        
         
     }
 }

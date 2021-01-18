@@ -14,6 +14,7 @@ namespace MenuApplication.Data
 
         private readonly MyMenuContext _context;
         private PizzaRepository pizzaRepository;
+        private PizzaDetailRepository pizzaDetailepository;
         private ToppingRepository toppingRepository;
 
         public UnitOfWork(MyMenuContext context)
@@ -22,8 +23,8 @@ namespace MenuApplication.Data
         }
 
         IPizzaRespository IUnitOfWork.Pizzas => pizzaRepository = pizzaRepository ?? new PizzaRepository(_context);
-
         IToppingRepository IUnitOfWork.Toppings => toppingRepository = toppingRepository ?? new ToppingRepository(_context);
+        IPizzaDetailRespository IUnitOfWork.PizzaDetails => pizzaDetailepository = pizzaDetailepository ?? new PizzaDetailRepository(_context);
 
 
         async Task<int> IUnitOfWork.CommitAsync()

@@ -9,6 +9,7 @@ namespace MenuApplication.Core
     {
         IPizzaRespository Pizzas { get; }
         IToppingRepository Toppings { get; }
+        IPizzaDetailRespository PizzaDetails { get; }
         Task<int> CommitAsync();
     }
 }

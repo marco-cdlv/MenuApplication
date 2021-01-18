@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MenuApplication.Migrations
 {
     [DbContext(typeof(MyMenuContext))]
-    [Migration("20210118012727_InitialCreate")]
+    [Migration("20210118201859_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -86,7 +86,7 @@ namespace MenuApplication.Migrations
                     b.Property<int>("ToppingId")
                         .HasColumnType("int");
 
-                    b.Property<int>("TopyngQuantity")
+                    b.Property<int>("ToppingQuantity")
                         .HasColumnType("int");
 
                     b.HasKey("PizzaDetailId");

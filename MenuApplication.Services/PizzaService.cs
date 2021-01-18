@@ -25,9 +25,20 @@ namespace MenuApplication.Services
             return newPizza;
         }
 
-        public Task AddToppingToPizza(string pizzaId, Topping topping)
+        public async Task AddToppingToPizza(int pizzaId, int toppingId, int quantity)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            PizzaDetails pizzaDetails = new PizzaDetails
+            {
+                PizzaId = pizzaId,
+                ToppingId = toppingId,
+                ToppingQuantity = quantity
+            };
+
+            Console.WriteLine("Topping quantity " + pizzaDetails.ToppingQuantity);
+
+            await _unitOfWork.PizzaDetails.AddAsync(pizzaDetails);
+            await _unitOfWork.CommitAsync();
         }
 
         public async Task DeletePizza(Pizza pizza)
@@ -47,9 +58,9 @@ namespace MenuApplication.Services
             return await _unitOfWork.Pizzas.GetAllAsync();
         }
 
-        public Task GetToppingsForPizza(int pizzaId)
+        public async Task<IEnumerable<Topping>> GetToppingsForPizza(int pizzaId)
         {
-            throw new NotImplementedException();
+            return await _unitOfWork.PizzaDetails.GetToppingsByPizzaId(pizzaId);
         }
     }
 }

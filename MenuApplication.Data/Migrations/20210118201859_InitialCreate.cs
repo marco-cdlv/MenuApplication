@@ -75,7 +75,7 @@ namespace MenuApplication.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     PizzaId = table.Column<int>(nullable: false),
                     ToppingId = table.Column<int>(nullable: false),
-                    TopyngQuantity = table.Column<int>(nullable: false)
+                    ToppingQuantity = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {

@@ -84,7 +84,7 @@ namespace MenuApplication.Migrations
                     b.Property<int>("ToppingId")
                         .HasColumnType("int");
 
-                    b.Property<int>("TopyngQuantity")
+                    b.Property<int>("ToppingQuantity")
                         .HasColumnType("int");
 
                     b.HasKey("PizzaDetailId");

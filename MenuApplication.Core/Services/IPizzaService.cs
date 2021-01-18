@@ -12,7 +12,7 @@ namespace MenuApplication.Core.Services
         Task<Pizza> Getpizza(int id);
         Task<Pizza> AddPizza(Pizza newPizza);        
         Task DeletePizza(Pizza pizza);
-        Task AddToppingToPizza(String pizzaId, Topping topping);
-        Task GetToppingsForPizza(int pizzaId);
+        Task AddToppingToPizza(int pizzaId, int toppingId, int quantity);
+        Task<IEnumerable<Topping>> GetToppingsForPizza(int pizzaId);
     }
 }

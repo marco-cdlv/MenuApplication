@@ -34,8 +34,19 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="MenuApplication.Data\Migrations\20210118012727_InitialCreate.cs" />
+    <Compile Remove="MenuApplication.Data\Migrations\20210118012727_InitialCreate.Designer.cs" />
+    <Compile Remove="MenuApplication.Data\Migrations\20210118194946_InitialCreate.cs" />
+    <Compile Remove="MenuApplication.Data\Migrations\20210118194946_InitialCreate.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="MenuApplication.Core\MenuApplication.Core.csproj" />
     <ProjectReference Include="MenuApplication.Data\MenuApplication.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="MenuApplication.Data\Migrations\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

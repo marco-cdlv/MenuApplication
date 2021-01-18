@@ -39,5 +39,33 @@ namespace MenuApplication.Controllers
 
             return Ok(pizzaResource);
         }
+
+        [HttpPost("")]
+        public async Task<ActionResult<PizzaResource>> AddPizza([FromBody] SavePizzaResource savePizzatResource)
+        {
+            var pizzaToCreate = mapper.Map<SavePizzaResource, Pizza>(savePizzatResource);
+            var newPizza = await pizzaService.AddPizza(pizzaToCreate);
+            var pizza = await pizzaService.Getpizza(newPizza.PizzaId);
+            var pizzaResource = mapper.Map<Pizza, PizzaResource>(pizza);
+            return Ok(pizzaResource);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeletePizza(int id)
+        {
+            var pizza = await pizzaService.Getpizza(id);
+
+            await pizzaService.DeletePizza(pizza);
+
+            return NoContent();
+        }
+
+        [HttpPost("{pizzaId}")]
+        public async Task<IActionResult> AddToppingToPizza(int pizzaId, [FromBody] SavePizzaDetailsResource savePizzaDetailsResource)
+        {
+            var pizzaDetailToCreate = mapper.Map<SavePizzaDetailsResource, PizzaDetails>(savePizzaDetailsResource);
+            await pizzaService.AddToppingToPizza(pizzaId, pizzaDetailToCreate.ToppingId, pizzaDetailToCreate.ToppingQuantity);
+            return Ok();
+        }             
     }
 }

@@ -14,12 +14,14 @@ namespace MenuApplication.Mapping
             // Domain to Resource
             CreateMap<Topping, ToppingResource>();
             CreateMap<Pizza, PizzaResource>();
+            CreateMap<PizzaDetails, PizzaDetailResource>();
 
             // Resource to Domain
             CreateMap<ToppingResource, Topping>();
             CreateMap<SaveTopppingResource, Topping>();
             CreateMap<PizzaResource, Pizza>();
             CreateMap<SavePizzaResource, Pizza>();
+            CreateMap<SavePizzaDetailsResource, PizzaDetails>();
         }
     }
 }

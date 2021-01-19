@@ -1,0 +1,18 @@
+<h1 id="tableLabel">Pizzas</h1>
+
+<p>Pizzas</p>
+
+<p *ngIf="!pizzas"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="pizzas">
+  <thead>
+    <tr>
+      <th>Name</th>      
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pizza of pizzas">
+      <td>{{ pizza.name }}</td>      
+    </tr>
+  </tbody>
+</table>

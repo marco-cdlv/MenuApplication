@@ -35,8 +35,6 @@ namespace MenuApplication.Services
                 ToppingQuantity = quantity
             };
 
-            Console.WriteLine("Topping quantity " + pizzaDetails.ToppingQuantity);
-
             await _unitOfWork.PizzaDetails.AddAsync(pizzaDetails);
             await _unitOfWork.CommitAsync();
         }

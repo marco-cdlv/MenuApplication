@@ -66,6 +66,16 @@ namespace MenuApplication.Controllers
             var pizzaDetailToCreate = mapper.Map<SavePizzaDetailsResource, PizzaDetails>(savePizzaDetailsResource);
             await pizzaService.AddToppingToPizza(pizzaId, pizzaDetailToCreate.ToppingId, pizzaDetailToCreate.ToppingQuantity);
             return Ok();
-        }             
+        }
+
+        [HttpGet("{pizzaId}/Toppings")]
+        public async Task<ActionResult<ToppingResource>> GetToppingsForPizza(int pizzaId)
+        {
+            var toppings = await pizzaService.GetToppingsForPizza(pizzaId);            
+            var toppingResource = mapper.Map<IEnumerable<Topping>, IEnumerable<ToppingResource>>(toppings);
+
+            return Ok(toppingResource);
+        }
     }
 }
+

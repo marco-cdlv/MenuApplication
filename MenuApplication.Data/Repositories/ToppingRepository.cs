@@ -18,7 +18,7 @@ namespace MenuApplication.Data.Repositories
         public async Task<Topping> GetWithPizzaByIdAsync(int id)
         {
             return await MyMenuContext.Topings
-                .Include(pd => pd.ToppingId)
+                .Include(pd => pd.PizzaDetails)
                 .SingleOrDefaultAsync(pd => pd.ToppingId == id);
         }
 

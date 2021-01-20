@@ -1,27 +1,29 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Inject } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { Topping } from '../interfaces';
+import { ToppingService } from '../topping.service';
 
 @Component({
   selector: 'app-app-topping',
   templateUrl: './app-topping.component.html'
 })
 export class AppToppingComponent  {
-  public toppings: Topping[]
+  public toppings: Observable<Topping[]>;
 
-  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    http.get<Topping[]>(baseUrl + 'api/Topping').subscribe(result => {      
-      this.toppings = result;
-      console.log('TEST ' + this.toppings[0].name);      
-    }, error => console.error(error));
+  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string,
+    protected toppingService: ToppingService,
+    protected formBuilder: FormBuilder) {
+    this.getToppings();
   }
 
-  public delete(toppingId : number):void {
-    console.log(toppingId + ' topping id to delete' );
+  public getToppings() {
+    this.toppings = this.toppingService.getToppings();
+  }
+
+  public delete(toppingId: number): void {
+    this.toppingService.deleteTopping(toppingId);
   }
 }
 
-interface Topping {
-  toppingId : number
-  name: string;  
-  quantity: number; 
-}

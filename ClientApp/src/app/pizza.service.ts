@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders  } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { NewPizza, Pizza, TopingToPizza, Topping } from './interfaces';
+import { NewPizza, Pizza, ToppingToPizza, Topping } from './interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -34,13 +34,14 @@ export class PizzaService {
        });    
   }
 
-  public addPizza(bodyRequest : JSON) {
+  public addPizza(pizza : NewPizza) {    
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json'
       })
     };
-    this.http.post<NewPizza>(this.baseUrl + 'api/Pizza', bodyRequest, httpOptions);
+    this.http.post<NewPizza>(this.baseUrl + 'api/Pizza', pizza, httpOptions)
+    .subscribe(response => console.log(response));
   }
 
   public addToppingtoPizza(pizzaId : number, bodyRequest : JSON) {
@@ -49,6 +50,6 @@ export class PizzaService {
         'Content-Type':  'application/json'
       })
     };
-    this.http.post<TopingToPizza>(this.baseUrl + 'api/Pizza/' + pizzaId, bodyRequest, httpOptions);
+    this.http.post<ToppingToPizza>(this.baseUrl + 'api/Pizza/' + pizzaId, bodyRequest, httpOptions);
   }
 }

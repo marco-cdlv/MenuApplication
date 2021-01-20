@@ -27,3 +27,8 @@ export interface ToppingToPizza{
     ToppingQuantity : number;
 }
 
+export interface NewTopping {
+    name: string
+    quantity: number;
+}
+

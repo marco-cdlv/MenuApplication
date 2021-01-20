@@ -4,6 +4,7 @@ import { Pizza, Topping } from '../interfaces';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-app-pizza',
@@ -11,22 +12,13 @@ import { FormBuilder } from '@angular/forms';
 })
 export class AppPizzaComponent {
   public pizzas: Observable<Pizza[]>;  
-  public toppings: Observable<Topping[]>;
-  
-  public toppingToPizzaForm = this.formBuilder.group ({
-    name : '',
-    size : ''
-  });
-
-  public newPizzaForm = this.formBuilder.group ({
-    toppingId: '',
-    toppingQuantity: ''
-  });
+  public toppings: Observable<Topping[]>;  
 
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string,
     protected pizzaService: PizzaService,
-    protected formBuilder: FormBuilder)
-  {
+    protected formBuilder: FormBuilder,
+    protected router : Router)
+  {    
     this.getPizzas();    
   }
 
@@ -42,16 +34,10 @@ export class AppPizzaComponent {
 
   public delete(pizzaId : number):void {
     this.pizzaService.deletePizza(pizzaId);   
-  }
-
-  public add():void {
-    console.log('Adding');
-    this.pizzaService.addPizza( this.newPizzaForm.value);
-  }
+  }  
   
-  public addToppingToPizza(pizzaId : number) {    
-    this.pizzaService.addToppingtoPizza(pizzaId, this.toppingToPizzaForm.value);
-    this.newPizzaForm.reset();    
+  public addToppingToPizza(pizzaId : number) {  
+    console.log('adding the pizza id ' + pizzaId);
   }
 
   private loadToppingsForPizza(pizzaId : number) { 

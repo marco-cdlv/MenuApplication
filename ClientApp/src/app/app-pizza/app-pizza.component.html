@@ -1,18 +1,17 @@
 <h1 id="tableLabel">Pizzas</h1>
 
-<p>Pizzas</p>
+<p>List fo Pizza names</p>
 
 <p *ngIf="!pizzas"><em>Loading...</em></p>
 
-<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="pizzas">
-  <thead>
-    <tr>
-      <th>Name</th>      
-    </tr>
-  </thead>
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="pizzas">  
   <tbody>
-    <tr *ngFor="let pizza of pizzas">
-      <td>{{ pizza.name }}</td>      
-    </tr>
+    <!--<tr *ngFor="let pizza of pizzas" (click)="open($event, pizza)" >-->
+    <tr *ngFor="let pizza of pizzas | async">
+      <td><strong>{{ pizza.name }}</strong></td>
+      <td *ngFor="let topping of toppings | async">{{topping.name}}</td>
+      <td><input type="button" (click)="delete(pizza.pizzaId)" value="Delete Pizza"/><input type="button" (click)="addToppingToPizza(pizza.pizzaId)" value="Add Topping"/></td>       
+    </tr>     
   </tbody>
+  <th><input type="button" (click)="add()" value="Add Pizza"/></th>     
 </table>

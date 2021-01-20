@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, FormBuilder } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
@@ -9,6 +9,8 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { AppPizzaComponent } from './app-pizza/app-pizza.component';
 import { AppToppingComponent } from './app-topping/app-topping.component';
+
+import { PizzaService } from './pizza.service';
 
 @NgModule({
   declarations: [
@@ -21,14 +23,14 @@ import { AppToppingComponent } from './app-topping/app-topping.component';
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
-    FormsModule,
+    FormsModule,    
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },      
       { path: 'app-pizza', component: AppPizzaComponent },
       { path: 'app-topping', component: AppToppingComponent }
     ])
   ],
-  providers: [],
+  providers: [PizzaService, FormBuilder],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

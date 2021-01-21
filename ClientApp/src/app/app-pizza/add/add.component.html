@@ -1,23 +1,24 @@
+<h4>Add New Pizza</h4>
 <form [formGroup]="newPizzaForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
-        <div>
-            <label for="name">
-              Name
+        <div class="mb-3">
+            <label class="form-label" for="name">
+              Pizza Name
             </label>
-            <input id="name" type="text" formControlName="Name">
+            <input class="form-control" id="name" type="text" formControlName="Name">
           </div>
         
-          <div>
-            <label for="address">
+          <div class="mb-3">
+            <label class="form-label" for="size">
               Size
             </label>
-            <input id="address" type="text" formControlName="Size">
+            <input class="form-control" id="address" type="text" formControlName="Size">
           </div>
     </div>
-    <div>
-        <button class="button" type="submit">Add</button>
+    <div class="mb-3">
+        <button class="btn btn-primary" type="submit">Add</button>
     </div>    
-    <div>
+    <div class="mb-3">
         <a routerLink="/app-pizza">go back</a>
     </div>    
   

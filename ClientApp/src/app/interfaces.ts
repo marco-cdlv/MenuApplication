@@ -23,7 +23,7 @@ export interface NewPizza{
 }
 
 export interface ToppingToPizza{
-    toppingId : number
+    ToppingId : number
     ToppingQuantity : number;
 }
 

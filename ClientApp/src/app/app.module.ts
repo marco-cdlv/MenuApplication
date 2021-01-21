@@ -36,6 +36,7 @@ import { ToppingService } from './topping.service';
       { path: '', component: HomeComponent, pathMatch: 'full' },      
       { path: 'app-pizza', component: AppPizzaComponent },
       { path: 'app-pizza/add', component: AddComponent },
+      { path: 'app-pizza/add-topping/:pizzaId', component: AddToppingComponent },
       { path: 'app-topping', component: AppToppingComponent },
       { path: 'app-topping/add-new-topping', component: AddNewToppingComponent }
     ])

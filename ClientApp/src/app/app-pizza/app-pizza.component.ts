@@ -3,7 +3,7 @@ import { PizzaService } from '../pizza.service';
 import { Pizza, Topping } from '../interfaces';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,37 +12,51 @@ import { Router } from '@angular/router';
 })
 export class AppPizzaComponent {
   public pizzas: Observable<Pizza[]>;  
-  public toppings: Observable<Topping[]>;  
+  public pizzasWithToppings: FormGroup[] = [];  
 
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string,
     protected pizzaService: PizzaService,
     protected formBuilder: FormBuilder,
     protected router : Router)
-  {    
+  {
     this.getPizzas();    
-  }
+  }  
 
-  public getPizzas() {    
-    this.pizzas = this.pizzaService.getPizzas();
-    let pizzaIds : number[] = []
-    this.pizzas.subscribe(data => data.forEach((item) => {      
-      pizzaIds.push(item.pizzaId);            
-    }));
-    // TODO improve this section in order to display toppings by Pizza
-    return this.loadToppingsForPizza(1);
+  getPizzas() {    
+    this.pizzaService.getPizzas().subscribe(data => 
+      data.forEach((pizza) => {
+        let pizzaWithToppingsForm: FormGroup;
+        let toppings : FormGroup[] = []; 
+        toppings = this.getToppingGroupsByPizzaId(pizza.pizzaId);        
+        pizzaWithToppingsForm = this.formBuilder.group ({
+          Pizza : pizza,
+          Toppings: []
+        });
+        pizzaWithToppingsForm.controls['Toppings'].setValue(toppings);           
+      this.pizzasWithToppings.push(pizzaWithToppingsForm);
+    }));      
   }  
 
   public delete(pizzaId : number):void {
-    this.pizzaService.deletePizza(pizzaId);   
+    this.pizzaService.deletePizza(pizzaId);       
   }  
   
-  public addToppingToPizza(pizzaId : number) {  
-    console.log('adding the pizza id ' + pizzaId);
+  public addToppingToPizza(pizzaId: number) {    
+    this.router.navigate(['/app-pizza/add-topping', pizzaId]);    
   }
 
-  private loadToppingsForPizza(pizzaId : number) { 
-    this.toppings = this.pizzaService.getToppingsForPizza(pizzaId);
-  }  
-  
+  private getToppingGroupsByPizzaId(pizzaId : number) : FormGroup[] {
+    let toppingGroups : FormGroup[] = [];
+    this.pizzaService.getToppingsForPizza(pizzaId).subscribe(data => data.forEach(topping => {
+      let toppingGroup : FormGroup;
+      toppingGroup = this.formBuilder.group ({
+        ToppingName : topping.name,
+        ToppingId : topping.toppingId,
+        ToppingQuantity : topping.quantity
+      });
+      toppingGroups.push(toppingGroup);      
+    }));    
+    return toppingGroups;    
+  }
 }
 

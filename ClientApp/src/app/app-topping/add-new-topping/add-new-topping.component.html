@@ -1,23 +1,23 @@
 <form [formGroup]="newToppingForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
-        <div>
-            <label for="name">
-              Name
+        <div class="mb-3">
+            <label class="form-label" for="name">
+              Topping Name
             </label>
-            <input id="name" type="text" formControlName="Name">
+            <input class="form-control" id="name" type="text" formControlName="Name">
           </div>
         
-          <div>
-            <label for="quantity">
+          <div class="mb-3">
+            <label class="form-label" for="quantity">
                 Quantity
             </label>
-            <input id="quantity" type="text" formControlName="Quantity">
+            <input class="form-control" id="quantity" type="number" data-bind="value:quantity" formControlName="Quantity">
           </div>
     </div>
-    <div>
-        <button class="button" type="submit">Add</button>
+    <div class="mb-3">
+        <button class="btn btn-primary" type="submit">Add</button>
     </div>    
-    <div>
+    <div class="mb-3">
         <a routerLink="/app-topping">go back</a>
     </div>    
   

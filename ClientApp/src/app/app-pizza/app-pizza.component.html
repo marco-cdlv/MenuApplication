@@ -1,18 +1,32 @@
 <h1 id="tableLabel">Pizzas</h1>
 
-<p>List fo Pizza names</p>
+<p>List of Pizzas</p>
 
-<p *ngIf="!pizzas"><em>Loading...</em></p>
+<p *ngIf="!pizzasWithToppings"><em>Loading...</em></p>
 
-<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="pizzas">  
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="pizzasWithToppings">  
   <tbody>
     <!--<tr *ngFor="let pizza of pizzas" (click)="open($event, pizza)" >-->
-    <tr *ngFor="let pizza of pizzas | async">
-      <td><strong>{{ pizza.name }}</strong></td>
-      <td *ngFor="let topping of toppings | async">{{topping.name}}</td>
-      <td><input type="button" (click)="delete(pizza.pizzaId)" value="Delete Pizza"/><input type="button" (click)="addToppingToPizza(pizza.pizzaId)" value="Add Topping"/></td>       
+    <tr *ngFor="let item of pizzasWithToppings">
+      <div class="row">
+        <div class="col-9">
+          <td><strong>{{ item.controls['Pizza'].value['name'] }}</strong></td>
+          <td *ngFor="let topping of item.controls['Toppings'].value">{{ topping.controls['ToppingName'].value }}</td>
+        </div>
+        <div class="col-3">
+          <div class="row">
+            <div class="col-6">
+              <input type="button" (click)="delete(item.controls['Pizza'].value['pizzaId'])" value="Delete Pizza" />
+            </div>
+            <div class="col-6">
+              <input type="button" (click)="addToppingToPizza(item.controls['Pizza'].value['pizzaId'])" value=" Add Topping" />
+            </div>
+          </div>          
+        </div>        
+      </div>
     </tr>     
   </tbody>  
   <td><a routerLink="/app-pizza/add">Add new Pizza</a></td>
        
 </table>
+

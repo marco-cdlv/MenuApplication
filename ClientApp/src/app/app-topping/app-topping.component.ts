@@ -24,6 +24,7 @@ export class AppToppingComponent  {
 
   public delete(toppingId: number): void {
     this.toppingService.deleteTopping(toppingId);
+        
   }
 }
 

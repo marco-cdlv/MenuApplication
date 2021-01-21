@@ -1,1 +1,24 @@
-<p>add-topping works!</p>
+<h4>Add topping to pizza</h4>
+<form [formGroup]="newToppingPizzaForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <div class="mb-3">
+            <label class="form-label" for="Topping name"> Topping</label>            
+            <select class="form-control" formControlName="ToppingId">
+                <option *ngFor="let topping of toppings | async"                
+                [value]="topping.toppingId">
+                {{topping.name}}</option>
+             </select>
+          </div>
+        
+          <div class="mb-3">
+            <label class="form-label" for="Topping Quantity">Topping Quantity</label>
+            <input class="form-control" id="toppingQuantity" type="number"  data-bind="value:toppingQuantity"formControlName="ToppingQuantity">
+          </div>
+    </div>
+    <div>
+        <button class="btn btn-primary" type="submit">Add</button>
+    </div>    
+    <div>
+        <a routerLink="/app-pizza">go back</a>
+    </div>
+  </form>

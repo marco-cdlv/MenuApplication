@@ -44,12 +44,13 @@ export class PizzaService {
     .subscribe(response => console.log(response));
   }
 
-  public addToppingtoPizza(pizzaId : number, bodyRequest : JSON) {
+  public addToppingtoPizza(pizzaId : number, toppingToPizza : ToppingToPizza) {    
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json'
       })
     };
-    this.http.post<ToppingToPizza>(this.baseUrl + 'api/Pizza/' + pizzaId, bodyRequest, httpOptions);
+    this.http.post<ToppingToPizza>(this.baseUrl + 'api/Pizza/' + pizzaId, toppingToPizza, httpOptions)
+    .subscribe(response => console.log(response));
   }
 }

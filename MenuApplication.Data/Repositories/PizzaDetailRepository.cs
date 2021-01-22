@@ -28,7 +28,18 @@ namespace MenuApplication.Data.Repositories
             return await MyMenuContext.Topings
                 .Where(item => toppingIds.Contains(item.ToppingId))
                 .ToListAsync();
+        }        
+
+        public void DeleteToppingsFromPizza(int pizzaId, int toppingId)
+        {
+
+            IEnumerable<PizzaDetails> pizzaDetailToRemoved = MyMenuContext.PizzaDetails
+                .Where(pd => pd.PizzaId == pizzaId && pd.ToppingId == toppingId)
+                .ToList();
+
+            MyMenuContext.PizzaDetails.Remove(pizzaDetailToRemoved.FirstOrDefault());                
         }
+
         private MyMenuContext MyMenuContext
         {
             get { return Context as MyMenuContext; }

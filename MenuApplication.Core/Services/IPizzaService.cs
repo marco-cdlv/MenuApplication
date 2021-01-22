@@ -14,5 +14,6 @@ namespace MenuApplication.Core.Services
         Task DeletePizza(Pizza pizza);
         Task AddToppingToPizza(int pizzaId, int toppingId, int quantity);
         Task<IEnumerable<Topping>> GetToppingsForPizza(int pizzaId);
+        Task DeleteToppingsFromPizzaAsync(int pizzaId, int toppingId);
     }
 }

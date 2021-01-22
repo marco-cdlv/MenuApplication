@@ -8,5 +8,6 @@ namespace MenuApplication.Core.Respositories
     public interface IPizzaDetailRespository : IRepository<PizzaDetails>
     {
         Task<IEnumerable<Topping>> GetToppingsByPizzaId(int pizzaId);
+        void DeleteToppingsFromPizza(int pizzaId, int toppingId);
     }
 }

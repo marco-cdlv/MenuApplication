@@ -53,4 +53,10 @@ export class PizzaService {
     this.http.post<ToppingToPizza>(this.baseUrl + 'api/Pizza/' + pizzaId, toppingToPizza, httpOptions)
     .subscribe(response => console.log(response));
   }
+
+  public deleteToppingFromPizza(pizzaId : number, toppingId : number){
+    this.http.delete<Pizza>(this.baseUrl + 'api/Pizza/'+ pizzaId + '/' + toppingId).subscribe(() => {
+      console.log('The pizza was removed');
+     });
+  }
 }

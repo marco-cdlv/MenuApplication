@@ -1,0 +1,25 @@
+<div class="row">
+    <h4>Toppings of <strong>{{pizzaName}}</strong> pizza</h4>
+</div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Toppings</th>
+        <th scope="col"> </th>        
+      </tr>
+    </thead>
+    <tbody *ngFor="let topping of toppingsByPizza | async; let i = index">
+      <tr>
+        <th scope="row">{{i+1}}</th>
+        <td>{{topping.name}}</td>
+        <td><button class="btn btn-danger" type="button" (click)="deleteToppingToPizza(topping.toppingId)" >delete</button></td>        
+      </tr>      
+    </tbody>
+  </table>
+
+  <div>
+    <a routerLink="/app-pizza">go back</a>
+</div>
+   

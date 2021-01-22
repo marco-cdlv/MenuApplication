@@ -46,6 +46,12 @@ namespace MenuApplication.Services
             await _unitOfWork.CommitAsync();
         }
 
+        public async Task DeleteToppingsFromPizzaAsync(int pizzaId, int toppingId)
+        {
+            _unitOfWork.PizzaDetails.DeleteToppingsFromPizza(pizzaId, toppingId);
+            await _unitOfWork.CommitAsync();
+        }
+
         public async Task<Pizza> Getpizza(int id)
         {
             return await _unitOfWork.Pizzas.GetByIdAsync(id);
@@ -59,6 +65,6 @@ namespace MenuApplication.Services
         public async Task<IEnumerable<Topping>> GetToppingsForPizza(int pizzaId)
         {
             return await _unitOfWork.PizzaDetails.GetToppingsByPizzaId(pizzaId);
-        }
+        }       
     }
 }

@@ -15,6 +15,7 @@ import { AddComponent } from './app-pizza/add/add.component';
 import { AddToppingComponent } from './app-pizza/add-topping/add-topping.component';
 import { AddNewToppingComponent } from './app-topping/add-new-topping/add-new-topping.component';
 import { ToppingService } from './topping.service';
+import { DeleteToppingComponent } from './app-pizza/delete-topping/delete-topping.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ToppingService } from './topping.service';
     AppToppingComponent,
     AddComponent,
     AddToppingComponent,
-    AddNewToppingComponent
+    AddNewToppingComponent,
+    DeleteToppingComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -37,6 +39,7 @@ import { ToppingService } from './topping.service';
       { path: 'app-pizza', component: AppPizzaComponent },
       { path: 'app-pizza/add', component: AddComponent },
       { path: 'app-pizza/add-topping/:pizzaId', component: AddToppingComponent },
+      { path: 'app-pizza/delete-topping/:pizzaId/:pizzaName', component: DeleteToppingComponent },
       { path: 'app-topping', component: AppToppingComponent },
       { path: 'app-topping/add-new-topping', component: AddNewToppingComponent }
     ])

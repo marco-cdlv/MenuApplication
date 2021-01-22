@@ -60,6 +60,13 @@ namespace MenuApplication.Controllers
             return NoContent();
         }
 
+        [HttpDelete("{id}/{toppingId}")]
+        public async Task<IActionResult> DeleteToppingFromPizza(int id, int toppingId)
+        {            
+            await pizzaService.DeleteToppingsFromPizzaAsync(id, toppingId);
+            return NoContent();
+        }
+
         [HttpPost("{pizzaId}")]
         public async Task<IActionResult> AddToppingToPizza(int pizzaId, [FromBody] SavePizzaDetailsResource savePizzaDetailsResource)
         {

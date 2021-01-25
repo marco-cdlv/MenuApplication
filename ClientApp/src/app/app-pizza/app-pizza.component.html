@@ -1,34 +1,37 @@
-<h1 id="tableLabel">Pizzas</h1>
-
-<p>List of Pizzas</p>
-
-<p *ngIf="!pizzasWithToppings"><em>Loading...</em></p>
-
-<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="pizzasWithToppings">  
-  <tbody>    
-    <tr *ngFor="let item of pizzasWithToppings | async">
-      <div class="row">
-        <div class="col-8">
-          <td><strong>{{ item.controls['Pizza'].value['name'] }}</strong></td>
-          <td *ngFor="let topping of item.controls['Toppings'].value">{{ topping.controls['ToppingName'].value }}</td>
-        </div>
-        <div class="col-4">
-          <div class="row">
-            <div >
-              <input class="btn btn-danger" type="button" (click)="delete(item.controls['Pizza'].value['pizzaId'])" value="delete pizza" />
-            </div>
-            <div >
-              <input class="btn btn-success" type="button" (click)="addToppingToPizza(item.controls['Pizza'].value['pizzaId'])" value="add topping" />
-            </div>
-            <div >
-              <input class="btn btn-warning" type="button" (click)="deleteToppingToPizza(item.controls['Pizza'].value['pizzaId'], item.controls['Pizza'].value['name'])" value="delete topping" />
-            </div>
-          </div>          
-        </div>        
+<div class="container">
+  <div class="row">
+    <h1 id="tableLabel">Pizzas</h1>    
+  </div>
+  <div>
+    <p>List of Pizzas</p>
+    <p *ngIf="!pizzasWithToppings"><em>Loading...</em></p>
+  </div>
+</div>
+<div class="container">  
+  <div class="row g-2" *ngFor="let item of pizzasWithToppings | async">
+    <div class="col-12 col-sm-2 border bg-light">
+      <div class="col-auto">
+        <label><strong>{{ item.controls['Pizza'].value['name'] }}</strong></label>
+        <input class="btn btn-danger" type="button" (click)="delete(item.controls['Pizza'].value['pizzaId'])" value="delete pizza" />        
       </div>
-    </tr>     
-  </tbody>  
-  <td><a routerLink="/app-pizza/add">Add new Pizza</a></td>
-       
-</table>
+    </div>
+    <div class="col-12 col-sm-10 border bg-light row justify-content-end">
+      <div class="col-10">
+        <label *ngFor="let topping of item.controls['Toppings'].value">{{ topping.controls['ToppingName'].value }} , </label>      
+      </div>
+      <div class="col-2">
+        <div class="col-auto">
+          <input class="btn btn-success" type="link" (click)="addToppingToPizza(item.controls['Pizza'].value['pizzaId'])" value="add topping" />        
+        </div>
+        <div class="col-auto">
+          <input class="btn btn-warning" type="link" (click)="deleteToppingToPizza(item.controls['Pizza'].value['pizzaId'], item.controls['Pizza'].value['name'])" value="delete topping" />      
+        </div>
+      </div>         
+    </div>    
+  </div>
+  <div class="row justify-content-start">    
+    <a routerLink="/app-pizza/add">Add new Pizza</a>     
+  </div>
+</div>
+
 

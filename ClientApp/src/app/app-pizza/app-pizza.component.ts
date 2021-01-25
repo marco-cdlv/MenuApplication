@@ -1,6 +1,5 @@
 import { Component, Inject } from '@angular/core';
 import { PizzaService } from '../pizza.service';
-import { Pizza } from '../interfaces';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -20,7 +19,6 @@ export class AppPizzaComponent {
   {
     this.pizzasWithToppings = new Observable<FormGroup[]> ();
     this.getPizzas();    
-    //this.pizzasWithToppings.subscribe(data => console.log(data));
   }  
 
   getPizzas() {    

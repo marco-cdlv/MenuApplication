@@ -15,7 +15,7 @@
     <tr *ngFor="let topping of toppings | async">
       <td>{{ topping.name }}</td>
       <td>{{ topping.quantity }}</td>
-      <td><input type="button" (click)="delete(topping.toppingId)" value="Delete Topping"/></td>              
+      <td><input class="btn btn-danger" type="button" (click)="delete(topping.toppingId)" value="Delete Topping"/></td>              
     </tr>    
   </tbody>
   <td><a routerLink="/app-topping/add-new-topping">Add new Topping</a></td>
